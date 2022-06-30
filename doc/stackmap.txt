@@ -1,0 +1,29 @@
+================================================================================
+							       *stackmap.nvim*
+
+This plugin allows you to applly a bunch of new mappings for a a particular
+mode with the ability to restore your initial mappings at any time. Sexx
+examples below:
+							     *stackmap.push()*
+
+stackmap.push({mode}, {couples})
+	
+	Push table of {couples} to the stack. Each {couple} is a pair { key =
+	action }. Every pushed {couple} will be applied for chosen {mode}. >
+
+	require'stackmap'.push('n', {
+		['<F11>'] = function () {
+			print("Doing something useful!")
+		},
+		...
+	})
+<
+							      *stackmap.pop()*
+stackmap.pop({mode})
+	
+	Remove all the mappings applied by calling |stackmap.push()| and
+	applly initial ones. >
+
+	require'stackmap'.pop('n')
+<
+vim:tw=78:ts=8:ft=help:norl:
